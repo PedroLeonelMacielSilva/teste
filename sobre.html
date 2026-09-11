@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leonel | Formação</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#fff;
+    color:#062b5e;
+}
+
+header{
+    height:72px;
+    background:#062b5e;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 9%;
+    border-top: 3px solid;
+    border-image: linear-gradient(
+    to right,
+    rgb(242, 122, 115),
+    rgb(149, 191, 220),
+    rgb(54, 65, 120)
+) 1;
+}
+
+.logo{
+    color: white;
+    font-size:25px;
+    font-weight:800;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:#b9c9df;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    padding-bottom:6px;
+}
+
+nav a:hover,
+nav a.active{
+    color:white;
+    border-bottom:2px solid #f77b65;
+}
+.secao{
+    min-height:calc(100vh - 72px);
+    padding:55px 8%;
+    display:flex;
+    align-items:center;
+    gap:55px;
+}
+
+.titulo{
+    width:210px;
+    flex-shrink:0;
+}
+
+.tag{
+    color:#f47c65;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.titulo h1{
+    font-size:29px;
+    line-height:1.15;
+    font-weight:800;
+}
+
+.linha{
+    width:38px;
+    height:3px;
+    background:#f47c65;
+    margin-top:16px;
+}
+
+.foto-container{
+    width:255px;
+    height:395px;
+    flex-shrink:0;
+    border-radius:15px;
+    overflow:hidden;
+    background:#e8e8e8;
+}
+
+.foto{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+}
+
+.cards{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.card{
+    min-height:130px;
+    background:#f3f6fb;
+    border-radius:15px;
+    padding:25px 22px;
+    box-shadow:0 4px 12px rgba(6,43,94,.04);
+    border-top:3px solid #0a356d;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px rgba(6,43,94,.10);
+}
+
+.card:nth-child(2){
+    border-top-color:#36bee9;
+}
+
+.card:nth-child(3){
+    border-top-color:#f47c65;
+}
+
+.card:nth-child(4){
+    border-top-color:#0a356d;
+}
+
+.card h3{
+    color:#f47c65;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#173d6c;
+    font-size:14px;
+    line-height:1.6;
+    font-weight:500;
+}
+
+@media(max-width:1000px){
+
+    .secao{
+        gap:30px;
+        padding:50px 6%;
+    }
+
+    .titulo{
+        width:170px;
+    }
+
+    .foto-container{
+        width:190px;
+        height:320px;
+    }
+
+    .cards{
+        gap:12px;
+    }
+}
+
+@media(max-width:800px){
+
+    .secao{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .titulo{
+        width:auto;
+    }
+
+    .foto-container{
+        width:260px;
+        height:350px;
+    }
+
+    .cards{
+        width:100%;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:0 25px;
+    }
+
+    nav{
+        gap:15px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .secao{
+        padding:40px 25px;
+        gap:25px;
+    }
+
+    .titulo h1{
+        font-size:27px;
+    }
+
+    .foto-container{
+        width:100%;
+        height:380px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        width:100%;
+    }
+
+    .card{
+        min-height:120px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        Leonel
+    </div>
+    <nav class="active">
+        <a href="home.html">Home</a>
+        <a href="sobre.html">Sobre mim</a>
+        <a href="contato.html">contato</a>
+    </nav>
+
+</header>
+<main class="secao">
+    <div display="flex">
+        <div class="titulo">
+            <div class="tag">
+                FORMAÇÃO
+            </div>
+            <h1>
+                Base<br>
+                profissional
+            </h1>
+            <div class="linha"></div><br>
+        </div>
+        <div class="foto-container">
+            <img
+                src="img/foto-retrato-2.jpg"
+                alt="Leonel"
+                class="foto"
+            >
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>FORMAÇÃO</h3>
+            <p>
+                Advogado, contador e especialista em
+                Ciência Política e Direito Eleitoral.
+            </p>
+        </div>
+        <div class="card">
+            <h3>ATUAÇÃO</h3>
+            <p>
+                Direito, contabilidade, ciência política
+                e análise do cenário eleitoral.
+            </p>
+        </div>
+        <div class="card">
+            <h3>TRAJETÓRIA</h3>
+            <p>
+                Atuação profissional e participação na
+                vida pública de Vitória de Santo Antão.
+            </p>
+        </div>
+        <div class="card">
+            <h3>ATUAÇÃO POLÍTICA</h3>
+            <p>
+                Candidato a vereador em Vitória de
+                Santo Antão e presença ativa no debate
+                político local.
+            </p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

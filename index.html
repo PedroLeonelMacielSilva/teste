@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leonel | Sobre Mim</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#07336f;
+    color:white;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:72px;
+    background:#062b5e;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 9%;
+    border-top: 3px solid;
+    border-image: linear-gradient(
+    to right,
+    rgb(242, 122, 115),
+    rgb(149, 191, 220),
+    rgb(54, 65, 120)
+) 1;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:#b9c9df;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    padding-bottom:6px;
+}
+
+nav a:hover,
+nav a.active{
+    color:white;
+    border-bottom:2px solid #f77b65;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:calc(100vh - 72px);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    padding:70px 9%;
+    background:
+        linear-gradient(
+            135deg,
+            #0a3b7e 0%,
+            #062d64 100%
+        );
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:-200px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='130'%3E%3Ctext x='0' y='85' font-family='Arial' font-size='70' font-weight='800' fill='white' fill-opacity='.025'%3ELEONEL%3C/text%3E%3C/svg%3E");
+    background-repeat:repeat;
+    transform:rotate(-5deg);
+    pointer-events:none;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+.conteudo{
+    width:52%;
+    position:relative;
+    z-index:5;
+}
+
+.tag{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#f77b65;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+
+.tag::before{
+    content:"";
+    width:19px;
+    height:2px;
+    background:#f77b65;
+}
+
+h1{
+    font-size:60px;
+    line-height:1;
+    margin-bottom:18px;
+    font-weight:800;
+}
+
+.subtitulo{
+    color:#28b9ed;
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.descricao{
+    max-width:530px;
+    color:#d1dceb;
+    font-size:17px;
+    line-height:1.9;
+}
+
+/* =====================================================
+   ÁREA DA FOTO
+===================================================== */
+.foto-area{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:48%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    z-index:2;
+}
+/* =====================================================
+   CÍRCULO CORAL
+===================================================== */
+.circulo{
+    position:absolute;
+    width:320px;
+    height:320px;
+    background:#f57962;
+    border-radius:50%;
+    top:16%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:1;
+}
+
+/* =====================================================
+   FOTO
+===================================================== */
+.foto{
+    position:absolute;
+    height:96%;
+    width:auto;
+    max-width:none;
+    /*
+       Mantém a pessoa proporcional.
+    */
+    object-fit:contain;
+    object-position:center bottom;
+    /*
+       Coloca a pessoa na frente do círculo.
+    */
+    z-index:3;
+    /*
+       Degradê na parte inferior.
+       É o que cria o efeito da referência,
+       onde o corpo desaparece no azul.
+    */
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000 78%,
+            rgba(0,0,0,.95) 84%,
+            rgba(0,0,0,.65) 90%,
+            rgba(0,0,0,.25) 96%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 78%,
+            rgba(0,0,0,.95) 84%,
+            rgba(0,0,0,.65) 90%,
+            rgba(0,0,0,.25) 96%,
+            transparent 100%
+        );
+}
+
+/* =====================================================
+   CÍRCULO DE CONTORNO
+   ===================================================== */
+.foto-area::before{
+    content:"";
+    position:absolute;
+    width:370px;
+    height:370px;
+    top:13%;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.12);
+    z-index:0;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+@media(max-width:1100px){
+    .conteudo{
+        width:55%;
+    }
+    .foto-area{
+        width:50%;
+    }
+    .circulo{
+        width:290px;
+        height:290px;
+    }
+    .foto-area::before{
+        width:340px;
+        height:340px;
+    }
+    .foto{
+        height:92%;
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+@media(max-width:900px){
+    header{
+        padding:0 6%;
+    }
+    .hero{
+        padding:60px 7%;
+    }
+    .conteudo{
+        width:100%;
+    }
+    h1{
+        font-size:48px;
+    }
+    /*
+       Foto passa para o fundo
+       sem desaparecer completamente.
+    */
+    .foto-area{
+        width:65%;
+        right:-8%;
+        opacity:.35;
+    }
+    .circulo{
+        width:300px;
+        height:300px;
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+@media(max-width:600px){
+    header{
+        height:65px;
+        padding:0 25px;
+    }
+    nav{
+        gap:15px;
+    }
+    nav a{
+        font-size:11px;
+    }
+    .hero{
+        min-height:calc(100vh - 65px);
+        padding:50px 25px;
+        align-items:flex-start;
+    }
+
+    h1{
+        font-size:42px;
+    }
+
+    .subtitulo{
+        font-size:14px;
+        line-height:1.5;
+    }
+
+    .descricao{
+        font-size:14px;
+    }
+
+    .botoes{
+        flex-direction:column;
+        width:190px;
+    }
+
+    .btn{
+        text-align:center;
+    }
+    /*
+       No celular deixamos
+       a foto atrás do conteúdo.
+    */
+    .foto-area{
+        width:100%;
+        right:-15%;
+        height:75%;
+        opacity:.25;
+    }
+
+    .foto{
+        height:100%;
+    }
+
+    .circulo{
+        width:280px;
+        height:280px;
+        top:15%;
+    }
+
+    .foto-area::before{
+        width:310px;
+        height:310px;
+        top:12%;
+    }
+
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        Leonel
+    </div>
+    <nav class="active">
+        <a href="home.html">Home</a>
+        <a href="sobre.html">Sobre mim</a>
+        <a href="contato.html">contato</a>
+    </nav>
+</header>
+<section class="hero">
+    <div class="conteudo">
+        <div class="tag">
+            SOBRE MIM</div>
+        <h1>
+            Leonel
+        </h1>
+        <div class="subtitulo">
+            Advogado · Contador · Ciência Política e Direito Eleitoral
+        </div>
+        <p class="descricao">
+            Advogado, contador e especialista em Ciência Política e Direito
+            Eleitoral. Atuo em Vitória de Santo Antão, onde também desenvolvo
+            atuação pública e política, produzindo conteúdo sobre política,
+            cidadania e os assuntos que impactam diretamente a vida dos
+            vitorienses.
+        </p>
+    </div>
+    <div class="foto-area">
+        <div class="circulo"></div>
+        <img
+            src="img/leonel-retrato.png"
+            alt="Leonel"
+            class="foto"
+        >
+    </div>
+</section>
+</body>
+</html>
