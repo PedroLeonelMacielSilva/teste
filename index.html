@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,13 +36,13 @@ header{
     align-items:center;
     justify-content:space-between;
     padding:0 9%;
-    border-top: 3px solid;
-    border-image: linear-gradient(
-    to right,
-    rgb(242, 122, 115),
-    rgb(149, 191, 220),
-    rgb(54, 65, 120)
-) 1;
+    border-top:3px solid;
+    border-image:linear-gradient(
+        to right,
+        rgb(242, 122, 115),
+        rgb(149, 191, 220),
+        rgb(54, 65, 120)
+    ) 1;
 }
 
 .logo{
@@ -62,8 +63,7 @@ nav a{
     padding-bottom:6px;
 }
 
-nav a:hover,
-nav a.active{
+nav a:hover{
     color:white;
     border-bottom:2px solid #f77b65;
 }
@@ -100,6 +100,7 @@ nav a.active{
 /* =========================
    CONTEÚDO
 ========================= */
+
 .conteudo{
     width:52%;
     position:relative;
@@ -148,6 +149,7 @@ h1{
 /* =====================================================
    ÁREA DA FOTO
 ===================================================== */
+
 .foto-area{
     position:absolute;
     right:0;
@@ -159,43 +161,20 @@ h1{
     align-items:flex-end;
     z-index:2;
 }
-/* =====================================================
-   CÍRCULO CORAL
-===================================================== */
-.circulo{
-    position:absolute;
-    width:320px;
-    height:320px;
-    background:#f57962;
-    border-radius:50%;
-    top:16%;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:1;
-}
 
 /* =====================================================
    FOTO
 ===================================================== */
+
 .foto{
     position:absolute;
     height:96%;
     width:auto;
     max-width:none;
-    /*
-       Mantém a pessoa proporcional.
-    */
     object-fit:contain;
     object-position:center bottom;
-    /*
-       Coloca a pessoa na frente do círculo.
-    */
     z-index:3;
-    /*
-       Degradê na parte inferior.
-       É o que cria o efeito da referência,
-       onde o corpo desaparece no azul.
-    */
+
     -webkit-mask-image:
         linear-gradient(
             to bottom,
@@ -217,168 +196,315 @@ h1{
         );
 }
 
-/* =====================================================
-   CÍRCULO DE CONTORNO
-   ===================================================== */
-.foto-area::before{
-    content:"";
-    position:absolute;
-    width:370px;
-    height:370px;
-    top:13%;
-    left:50%;
-    transform:translateX(-50%);
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.12);
-    z-index:0;
-}
 
 /* =====================================================
    RESPONSIVIDADE
+   SOMENTE AQUI O COMPORTAMENTO É ALTERADO
 ===================================================== */
-@media(max-width:1100px){
+
+
+/* =========================
+   TELAS MENORES
+   1100px
+========================= */
+
+@media (max-width:1100px){
+
     .conteudo{
         width:55%;
     }
+
     .foto-area{
         width:50%;
     }
-    .circulo{
-        width:290px;
-        height:290px;
-    }
-    .foto-area::before{
-        width:340px;
-        height:340px;
-    }
+
     .foto{
         height:92%;
     }
 }
 
+
 /* =========================
    TABLET
+   900px
 ========================= */
-@media(max-width:900px){
+
+@media (max-width:900px){
+
     header{
         padding:0 6%;
     }
+
     .hero{
         padding:60px 7%;
     }
+
     .conteudo{
         width:100%;
+        max-width:620px;
     }
+
     h1{
         font-size:48px;
     }
+
+    .subtitulo{
+        max-width:600px;
+    }
+
+    .descricao{
+        max-width:560px;
+    }
+
     /*
-       Foto passa para o fundo
-       sem desaparecer completamente.
+       A foto fica atrás do texto.
+       Mantém parte da imagem visível.
     */
+
     .foto-area{
         width:65%;
-        right:-8%;
+        right:-10%;
         opacity:.35;
+        pointer-events:none;
     }
-    .circulo{
-        width:300px;
-        height:300px;
+
+    .foto{
+        height:80%;
     }
 }
 
+
 /* =========================
    CELULAR
+   600px
 ========================= */
-@media(max-width:600px){
+
+@media (max-width:600px){
+
+    body{
+        overflow-x:hidden;
+    }
+
     header{
         height:65px;
-        padding:0 25px;
+        padding:0 20px;
     }
+
+    .logo{
+        font-size:22px;
+        flex-shrink:0;
+    }
+
     nav{
-        gap:15px;
+        gap:12px;
     }
+
     nav a{
-        font-size:11px;
+        font-size:13px;
+        padding-bottom:4px;
+        white-space:nowrap;
     }
+
     .hero{
         min-height:calc(100vh - 65px);
-        padding:50px 25px;
+        padding:45px 25px 60px;
         align-items:flex-start;
+    }
+
+    .conteudo{
+        width:100%;
+        max-width:none;
+    }
+
+    .tag{
+        font-size:13px;
+        gap:8px;
+        margin-bottom:18px;
+    }
+
+    .tag::before{
+        width:16px;
     }
 
     h1{
         font-size:42px;
+        margin-bottom:15px;
     }
 
     .subtitulo{
         font-size:14px;
         line-height:1.5;
+        margin-bottom:20px;
+        max-width:100%;
     }
 
     .descricao{
+        max-width:100%;
         font-size:14px;
+        line-height:1.75;
     }
 
-    .botoes{
-        flex-direction:column;
-        width:190px;
-    }
-
-    .btn{
-        text-align:center;
-    }
     /*
-       No celular deixamos
-       a foto atrás do conteúdo.
+       Foto fica no fundo e não interfere
+       na leitura do conteúdo.
     */
+
     .foto-area{
         width:100%;
-        right:-15%;
         height:75%;
+        right:-1%;
+        bottom:0;
         opacity:.25;
+        pointer-events:none;
+    }
+
+    .foto{
+        height:75%;
+        max-width:none;
+    }
+}
+
+
+/* =========================
+   CELULARES PEQUENOS
+   450px
+========================= */
+
+@media (max-width:450px){
+
+    header{
+        padding:0 16px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    nav{
+        gap:9px;
+    }
+
+    nav a{
+        font-size:9px;
+    }
+
+    .hero{
+        padding:40px 20px 50px;
+    }
+
+    .tag{
+        font-size:12px;
+        letter-spacing:1.5px;
+    }
+
+    h1{
+        font-size:38px;
+    }
+
+    .subtitulo{
+        font-size:13px;
+    }
+
+    .descricao{
+        font-size:13px;
+        line-height:1.7;
+    }
+
+    .foto-area{
+        width:110%;
+        right:-25%;
+        height:70%;
+        opacity:.20;
     }
 
     .foto{
         height:100%;
     }
-
-    .circulo{
-        width:280px;
-        height:280px;
-        top:15%;
-    }
-
-    .foto-area::before{
-        width:310px;
-        height:310px;
-        top:12%;
-    }
-
 }
+
+
+/* =========================
+   CELULARES MUITO PEQUENOS
+   360px
+========================= */
+
+@media (max-width:360px){
+
+    header{
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    nav{
+        gap:7px;
+    }
+
+    nav a{
+        font-size:8px;
+    }
+
+    .hero{
+        padding:35px 18px 45px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+
+    .subtitulo{
+        font-size:12px;
+    }
+
+    .descricao{
+        font-size:12px;
+        line-height:1.65;
+    }
+
+    .foto-area{
+        right:-30%;
+        opacity:.17;
+    }
+}
+
 </style>
 </head>
+
 <body>
+
 <header>
+
     <div class="logo">
         Leonel
     </div>
-    <nav class="active">
+
+    <nav>
         <a href="index.html">Home</a>
-        <a href="sobre.html">Sobre mim</a>
+        <a href="sobre.html" class="active">Sobre mim</a>
         <a href="contato.html">contato</a>
     </nav>
+
 </header>
+
+
 <section class="hero">
+
     <div class="conteudo">
+
         <div class="tag">
-            SOBRE MIM</div>
+            SOBRE MIM
+        </div>
+
         <h1>
             Leonel
         </h1>
+
         <div class="subtitulo">
             Advogado · Contador · Ciência Política e Direito Eleitoral
         </div>
+
         <p class="descricao">
             Advogado, contador e especialista em Ciência Política e Direito
             Eleitoral. Atuo em Vitória de Santo Antão, onde também desenvolvo
@@ -386,15 +512,23 @@ h1{
             cidadania e os assuntos que impactam diretamente a vida dos
             vitorienses.
         </p>
+
     </div>
+
+
     <div class="foto-area">
+
         <div class="circulo"></div>
+
         <img
-            src="img/leonel-retrato.png"
+            src="img/ChatGPT Image 13 de set. de 2026, 11_58_10.png"
             alt="Leonel"
             class="foto"
         >
+
     </div>
+
 </section>
+
 </body>
 </html>
