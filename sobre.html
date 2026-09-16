@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,81 +12,142 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+
 body{
+    width:100%;
+    min-height:100vh;
     font-family:'Inter',sans-serif;
     background:#fff;
     color:#062b5e;
+    overflow-x:hidden;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header{
-    height:72px;
+    width:100%;
+    min-height:72px;
     background:#062b5e;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 9%;
-    border-top: 3px solid;
-    border-image: linear-gradient(
-    to right,
-    rgb(242, 122, 115),
-    rgb(149, 191, 220),
-    rgb(54, 65, 120)
-) 1;
+
+    padding:0 clamp(25px, 9vw, 120px);
+
+    border-top:3px solid;
+
+    border-image:linear-gradient(
+        to right,
+        rgb(242,122,115),
+        rgb(149,191,220),
+        rgb(54,65,120)
+    ) 1;
 }
 
 .logo{
-    color: white;
-    font-size:25px;
+    color:#fff;
+    font-size:clamp(21px, 2vw, 25px);
     font-weight:800;
+    white-space:nowrap;
 }
 
 nav{
     display:flex;
-    gap:30px;
+    align-items:center;
+    gap:clamp(15px, 3vw, 30px);
 }
 
 nav a{
     color:#b9c9df;
     text-decoration:none;
-    font-size:16px;
+
+    font-size:clamp(11px, 1.3vw, 16px);
     font-weight:600;
+
     padding-bottom:6px;
+
+    white-space:nowrap;
+
+    transition:.25s ease;
 }
 
 nav a:hover,
 nav a.active{
-    color:white;
+    color:#fff;
     border-bottom:2px solid #f77b65;
 }
+
+
+/* =========================
+   SEÇÃO PRINCIPAL
+========================= */
+
 .secao{
+    width:100%;
     min-height:calc(100vh - 72px);
-    padding:55px 8%;
-    display:flex;
+
+    padding:clamp(40px, 6vw, 70px)
+            clamp(25px, 8vw, 110px);
+
+    display:grid;
+
+    /*
+       Título + foto + cards
+    */
+    grid-template-columns:
+        minmax(150px, 210px)
+        minmax(190px, 255px)
+        minmax(300px, 1fr);
+
     align-items:center;
-    gap:55px;
+
+    gap:clamp(25px, 4vw, 55px);
 }
 
+
+/* =========================
+   TÍTULO
+========================= */
+
 .titulo{
-    width:210px;
-    flex-shrink:0;
+    width:100%;
 }
 
 .tag{
     color:#f47c65;
-    font-size:16px;
+
+    font-size:clamp(13px, 1.4vw, 16px);
+
     font-weight:700;
     letter-spacing:2px;
+
     margin-bottom:10px;
 }
 
 .titulo h1{
-    font-size:29px;
+    color:#062b5e;
+
+    font-size:clamp(25px, 2.5vw, 29px);
+
     line-height:1.15;
     font-weight:800;
 }
@@ -93,46 +155,78 @@ nav a.active{
 .linha{
     width:38px;
     height:3px;
+
     background:#f47c65;
+
     margin-top:16px;
 }
 
+
+/* =========================
+   FOTO
+========================= */
+
 .foto-container{
-    width:255px;
+    width:100%;
     height:395px;
-    flex-shrink:0;
+
     border-radius:15px;
+
     overflow:hidden;
+
     background:#e8e8e8;
 }
 
 .foto{
     width:100%;
     height:100%;
+
+    display:block;
+
     object-fit:cover;
     object-position:center;
 }
 
+
+/* =========================
+   CARDS
+========================= */
+
 .cards{
-    flex:1;
+    width:100%;
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
     gap:16px;
 }
 
 .card{
+    min-width:0;
     min-height:130px;
+
     background:#f3f6fb;
+
     border-radius:15px;
+
     padding:25px 22px;
-    box-shadow:0 4px 12px rgba(6,43,94,.04);
+
+    box-shadow:
+        0 4px 12px rgba(6,43,94,.04);
+
     border-top:3px solid #0a356d;
-    transition:.3s;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
 }
 
 .card:hover{
     transform:translateY(-5px);
-    box-shadow:0 12px 25px rgba(6,43,94,.10);
+
+    box-shadow:
+        0 12px 25px rgba(6,43,94,.10);
 }
 
 .card:nth-child(2){
@@ -149,164 +243,446 @@ nav a.active{
 
 .card h3{
     color:#f47c65;
+
     font-size:13px;
     font-weight:800;
+
     margin-bottom:12px;
 }
 
 .card p{
     color:#173d6c;
+
     font-size:14px;
     line-height:1.6;
+
     font-weight:500;
 }
 
-@media(max-width:1000px){
+
+/* =========================
+   NOTEBOOK / TABLET GRANDE
+========================= */
+
+@media(max-width:1100px){
 
     .secao{
-        gap:30px;
-        padding:50px 6%;
-    }
+        grid-template-columns:
+            150px
+            200px
+            minmax(280px,1fr);
 
-    .titulo{
-        width:170px;
+        gap:25px;
+
+        padding-left:6%;
+        padding-right:6%;
     }
 
     .foto-container{
-        width:190px;
-        height:320px;
+        height:330px;
     }
 
     .cards{
         gap:12px;
     }
-}
 
-@media(max-width:800px){
-
-    .secao{
-        flex-direction:column;
-        align-items:flex-start;
+    .card{
+        padding:22px 18px;
     }
 
-    .titulo{
-        width:auto;
+    .card p{
+        font-size:13px;
+    }
+    nav a{
+        font-size: 13px;
+    }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:850px){
+
+    header{
+        padding-left:6%;
+        padding-right:6%;
+    }
+
+    .secao{
+
+        /*
+           Primeira linha:
+           título + foto
+
+           Segunda linha:
+           cards
+        */
+
+        grid-template-columns:
+            minmax(140px,190px)
+            minmax(190px,260px);
+
+        justify-content:center;
+
+        gap:30px;
+
+        padding:
+            45px 6%;
+    }
+
+    .cards{
+
+        grid-column:1 / -1;
+
+        width:100%;
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        margin-top:5px;
     }
 
     .foto-container{
-        width:260px;
+        height:330px;
+    }
+    nav a{
+        font-size: 13px;
+    }
+}
+
+
+/* =========================
+   TABLET PEQUENO
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        min-height:68px;
+
+        padding:
+            0 25px;
+    }
+
+    nav{
+        gap:14px;
+    }
+
+    nav a{
+        font-size:13px;
+    }
+
+    .secao{
+
+        display:flex;
+        flex-direction:column;
+
+        align-items:center;
+
+        width:100%;
+
+        min-height:auto;
+
+        padding:
+            40px 25px 50px;
+
+        gap:25px;
+    }
+
+    .titulo{
+        width:100%;
+        text-align:left;
+    }
+
+    .titulo h1{
+        font-size:28px;
+    }
+
+    .foto-container{
+
+        width:min(100%,260px);
+
         height:350px;
     }
 
     .cards{
+
         width:100%;
+
+        display:grid;
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:14px;
+    }
+
+    .card{
+        min-height:130px;
+
+        padding:20px 18px;
     }
 }
 
-@media(max-width:600px){
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width:500px){
 
     header{
-        padding:0 25px;
+        min-height:65px;
+
+        padding:
+            0 20px;
+    }
+
+    .logo{
+        font-size:21px;
     }
 
     nav{
-        gap:15px;
+        gap:10px;
     }
 
     nav a{
-        font-size:11px;
+        font-size:13px;
+        padding-bottom:5px;
     }
 
     .secao{
-        padding:40px 25px;
-        gap:25px;
+
+        padding:
+            35px 20px 45px;
+
+        gap:23px;
+    }
+
+    .tag{
+        font-size:13px;
     }
 
     .titulo h1{
         font-size:27px;
     }
 
+    .linha{
+        margin-top:13px;
+    }
+
     .foto-container{
+
         width:100%;
-        height:380px;
+        max-width:300px;
+
+        height:360px;
     }
 
     .cards{
+
         grid-template-columns:1fr;
-        width:100%;
+
+        gap:14px;
     }
 
     .card{
-        min-height:120px;
+
+        width:100%;
+
+        min-height:auto;
+
+        padding:
+            20px 18px;
+    }
+
+    .card h3{
+        font-size:12px;
+    }
+
+    .card p{
+        font-size:13px;
+        line-height:1.6;
     }
 }
+
+
+/* =========================
+   CELULAR PEQUENO
+========================= */
+
+@media(max-width:360px){
+
+    header{
+        padding:
+            0 15px;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    nav{
+        gap:7px;
+    }
+
+    nav a{
+        font-size:9px;
+    }
+
+    .secao{
+        padding:
+            30px 15px 40px;
+    }
+
+    .titulo h1{
+        font-size:25px;
+    }
+
+    .foto-container{
+        height:320px;
+    }
+
+    .card{
+        padding:18px 16px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
+
 <header>
+
     <div class="logo">
         Leonel
     </div>
-    <nav class="active">
-        <a href="index.html">Home</a>
-        <a href="sobre.html">Sobre mim</a>
-        <a href="contato.html">contato</a>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="sobre.html">
+            Sobre mim
+        </a>
+
+        <a href="contato.html">
+            contato
+        </a>
+
     </nav>
 
 </header>
+
+
 <main class="secao">
-    <div display="flex">
-        <div class="titulo">
-            <div class="tag">
-                FORMAÇÃO
-            </div>
-            <h1>
-                Base<br>
-                profissional
-            </h1>
-            <div class="linha"></div><br>
+
+
+    <!-- TÍTULO -->
+
+    <div class="titulo">
+
+        <div class="tag">
+            FORMAÇÃO
         </div>
-        <div class="foto-container">
-            <img
-                src="img/foto-retrato-2.jpg"
-                alt="Leonel"
-                class="foto"
-            >
-        </div>
+
+        <h1>
+            Base<br>
+            profissional
+        </h1>
+
+        <div class="linha"></div>
+
     </div>
+
+
+    <!-- FOTO -->
+
+    <div class="foto-container">
+
+        <img
+            src="img/foto-retrato-2.jpg"
+            alt="Leonel"
+            class="foto"
+        >
+
+    </div>
+
+
+    <!-- CARDS -->
+
     <div class="cards">
+
+
         <div class="card">
-            <h3>FORMAÇÃO</h3>
+
+            <h3>
+                FORMAÇÃO
+            </h3>
+
             <p>
                 Advogado, contador e especialista em
                 Ciência Política e Direito Eleitoral.
             </p>
+
         </div>
+
+
         <div class="card">
-            <h3>ATUAÇÃO</h3>
+
+            <h3>
+                ATUAÇÃO
+            </h3>
+
             <p>
                 Direito, contabilidade, ciência política
                 e análise do cenário eleitoral.
             </p>
+
         </div>
+
+
         <div class="card">
-            <h3>TRAJETÓRIA</h3>
+
+            <h3>
+                TRAJETÓRIA
+            </h3>
+
             <p>
                 Atuação profissional e participação na
                 vida pública de Vitória de Santo Antão.
             </p>
+
         </div>
+
+
         <div class="card">
-            <h3>ATUAÇÃO POLÍTICA</h3>
+
+            <h3>
+                ATUAÇÃO POLÍTICA
+            </h3>
+
             <p>
                 Candidato a vereador em Vitória de
                 Santo Antão e presença ativa no debate
                 político local.
             </p>
+
         </div>
+
+
     </div>
+
+
 </main>
+
+
 </body>
 </html>
